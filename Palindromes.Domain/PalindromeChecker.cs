@@ -15,12 +15,12 @@ namespace Palindromes.Domain
         {
             s = input.ToLower().Trim().ToCharArray();
             int i = 0;
-            for (int j=0;j<(s.Length()/2);j++)
+            for (int j=0;(i+j)<=s.Length();j++)
             {
                 if (!s[j].IsLetter()) {continue;}
                 i++;
-                if (!s[-i].IsLetter()) {i++;}
-                if (s[j] != s[-i])
+                while (!s[^i].IsLetter()) {i++;}
+                if (s[j] != s[^i])
                 {
                     palindrome = false;
                     break;
